@@ -42,21 +42,23 @@ class Goblin {
     const newCellIndex = this.getRandomCell(this.currentCell);
     this.currentCell = newCellIndex;
     const goblinElement = document.createElement('img');
-    goblinElement.src = goblin_namespaceObject; // Use imported image path
+    goblinElement.src = goblin_namespaceObject; // Use imported image path for goblin
     goblinElement.classList.add('goblin');
     goblinElement.onclick = () => {
       this.game.increaseScore();
       this.clear();
 
-      // Изменяем курсор на молоток при клике
+      // Change cursor to hammer on click, no additional delay
       document.body.style.cursor = `url(${hammer_namespaceObject}), auto`;
 
-      // Возвращаем курсор обратно через 300ms
+      // Revert cursor back to default after 300ms
       setTimeout(() => {
         document.body.style.cursor = 'auto';
       }, 300);
     };
     cells[newCellIndex].appendChild(goblinElement);
+
+    // Move goblin every 1 second with no additional timeouts
     this.timeout = setTimeout(() => {
       this.game.missGoblin();
       this.clear();
