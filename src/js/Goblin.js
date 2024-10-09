@@ -1,5 +1,5 @@
 import goblinImg from '../goblin.png'; // Import image through Webpack
-import hammerImg from '../hammer.png';  // Импорт картинки молотка
+import hammerImg from '../hammer.png'; // Импорт картинки молотка
 
 export default class Goblin {
   constructor(gameBoard, game) {
@@ -43,7 +43,6 @@ export default class Goblin {
         document.body.style.cursor = 'auto';
       }, 300);
     };
-
 
     cells[newCellIndex].appendChild(goblinElement);
 
