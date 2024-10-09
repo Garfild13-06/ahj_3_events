@@ -28,17 +28,17 @@ export default class Goblin {
     this.currentCell = newCellIndex;
 
     const goblinElement = document.createElement('img');
-    goblinElement.src = goblinImg; // Use imported image path
+    goblinElement.src = goblinImg; // Use imported image path for goblin
     goblinElement.classList.add('goblin');
 
     goblinElement.onclick = () => {
       this.game.increaseScore();
       this.clear();
 
-      // Изменяем курсор на молоток при клике
+      // Change cursor to hammer on click, no additional delay
       document.body.style.cursor = `url(${hammerImg}), auto`;
 
-      // Возвращаем курсор обратно через 300ms
+      // Revert cursor back to default after 300ms
       setTimeout(() => {
         document.body.style.cursor = 'auto';
       }, 300);
@@ -46,6 +46,7 @@ export default class Goblin {
 
     cells[newCellIndex].appendChild(goblinElement);
 
+    // Move goblin every 1 second with no additional timeouts
     this.timeout = setTimeout(() => {
       this.game.missGoblin();
       this.clear();
