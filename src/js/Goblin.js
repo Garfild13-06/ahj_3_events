@@ -1,5 +1,5 @@
 import goblinImg from '../goblin.png'; // Import image through Webpack
-import hammerImg from '../hammer.png'; // Импорт картинки молотка
+import hammerImg from '../hammer.png';  // Импорт картинки молотка
 
 export default class Goblin {
   constructor(gameBoard, game) {
@@ -28,25 +28,25 @@ export default class Goblin {
     this.currentCell = newCellIndex;
 
     const goblinElement = document.createElement('img');
-    goblinElement.src = goblinImg; // Use imported image path for goblin
+    goblinElement.src = goblinImg; // Use imported image path
     goblinElement.classList.add('goblin');
 
     goblinElement.onclick = () => {
       this.game.increaseScore();
       this.clear();
 
-      // Change cursor to hammer on click, no additional delay
+      // Изменяем курсор на молоток при клике
       document.body.style.cursor = `url(${hammerImg}), auto`;
 
-      // Revert cursor back to default after 300ms
+      // Возвращаем курсор обратно через 300ms
       setTimeout(() => {
         document.body.style.cursor = 'auto';
       }, 300);
     };
 
+
     cells[newCellIndex].appendChild(goblinElement);
 
-    // Move goblin every 1 second with no additional timeouts
     this.timeout = setTimeout(() => {
       this.game.missGoblin();
       this.clear();
